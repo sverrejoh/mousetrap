@@ -20,7 +20,6 @@
  * @version 1.4.6
  * @url craig.is/killing/mice
  */
-(function(window, document, undefined) {
 
     /**
      * mapping of special keycodes to their corresponding keys
@@ -943,11 +942,5 @@
         handleKey: _handleKey
     };
 
-    // expose mousetrap to the global object
-    window.Mousetrap = Mousetrap;
-
     // expose mousetrap as an AMD module
-    if (typeof define === 'function' && define.amd) {
-        define(Mousetrap);
-    }
-}) (window, document);
+    module.exports = Mousetrap;
