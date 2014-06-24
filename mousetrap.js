@@ -125,7 +125,7 @@
             'command': 'meta',
             'return': 'enter',
             'escape': 'esc',
-            'mod': /Mac|iPod|iPhone|iPad/.test(navigator.platform) ? 'meta' : 'ctrl'
+            'mod': /Mac|iPod|iPhone|iPad/.test(typeof navigator === 'object' ? navigator.platform : "") ? 'meta' : 'ctrl'
         },
 
         /**
@@ -844,9 +844,11 @@
     }
 
     // start!
-    _addEvent(document, 'keypress', _handleKeyEvent);
-    _addEvent(document, 'keydown', _handleKeyEvent);
-    _addEvent(document, 'keyup', _handleKeyEvent);
+    if(typeof document === 'object') {
+      _addEvent(document, 'keypress', _handleKeyEvent);
+      _addEvent(document, 'keydown', _handleKeyEvent);
+      _addEvent(document, 'keyup', _handleKeyEvent);
+    }
 
     var Mousetrap = {
 
